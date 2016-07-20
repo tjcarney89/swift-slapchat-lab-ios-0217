@@ -41,10 +41,10 @@ That's it! Your model and data store are now ready to fetch and save `Message`s.
 
 #####Making Test Messages
 
-1. We can't display messages if we haven't created any! Let's do this in `TableViewController.m`.
+1. We can't display messages if we haven't created any! Let's do this in `TableViewController`.
     - Make a local array for storing messages. This will power your tableview's data source, and make it more self-contained.    
 	- Make your dataStore a property and initialize it. 
-	- Create a few `Message`s. Use `+NSEntityDescription insertNewObjectForEntityForName(_:inManagedObjectContext:)`. 
+	- Create a few `Message`s. Use `NSEntityDescription` function `insertNewObjectForEntityForName(_:inManagedObjectContext:)`. 
 	- Don't forget to set your test messages' `content` and `createdAt` properties! 
 2. So now is when you'd want to `saveContext()` so that these messages would persist in our database. BUT— since this is in `viewDidLoad()`, that means that we'll be creating and saving new messages *every time we run our app*. Let's add some logic to prevent that.
     - Make a new method called `generateTestData()`. Dump all your message creation in there, and make your dataStore `saveContext()` and `fetchData()` at the end. 
