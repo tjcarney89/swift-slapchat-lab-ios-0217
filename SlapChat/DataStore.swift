@@ -12,7 +12,7 @@ import CoreData
 class DataStore {
     
 
-    static let sharedDataStore = DataStore()
+    static let sharedDataStore =  DataStore()
     
     
     // MARK: - Core Data Saving support
