@@ -18,20 +18,20 @@ class AddMessageViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    @IBAction func saveMessageButtonTapped(sender: AnyObject) {
+    @IBAction func saveMessageButtonTapped(_ sender: AnyObject) {
         
-        let store = DataStore()
-        let newMessage = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: store.managedObjectContext) as! Message
+        var store = DataStore()
+        let newMessage = NSEntityDescription.insertNewObject(forEntityName: "Message", into: store.managedObjectContext) as! Message
         newMessage.content = addMessageTextField.text
-        newMessage.createdAt = NSDate()
+        newMessage.createdAt = Date()
         store.saveContext()
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
         
     }
     
-    @IBAction func cancelButtonTapped(sender: AnyObject) {
+    @IBAction func cancelButtonTapped(_ sender: AnyObject) {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
 
