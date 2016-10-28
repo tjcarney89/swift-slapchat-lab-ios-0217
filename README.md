@@ -12,8 +12,7 @@ Let's make an app where you can create messages that persist in Core Data.
 Open up the project. We've set up a blank tableview controller and started `DataManager`. Your job is to setup core data, display your persistent `Message` objects, and add an interface where users can create and save new messages.
 
 ###Core Data Setup
-Before we work on any views, we need to prepare our models for core data. 
-This part has much more 'explaining' than 'coding', but it's important! So **soak up the knowledge.**
+Before we work on any views, we need to prepare our models for core data. This part has much more 'explaining' than 'coding', but it's important! So **soak up the knowledge.**
 
 #####Data Model
 
@@ -28,12 +27,12 @@ Our `.xcdatamodeld` is setup, so now let's setup `DataStore` so that it can fetc
 
 #####Data Store
 
-1. Check out `DataStore.swift`. We've set a few things up for you: singleton, `saveContext`, and a section titled `Core Data Stack` where the getter for an `NSManagedObjectContext` property is being overridden. Let's look at that getter.
+1. Check out `DataStore.swift`. We've set a few things up for you: a singleton, `saveContext()`, and a section titled `Core Data Stack` where the getter for an `NSManagedObjectContext` property is being overridden. Let's look at that getter.
    1. There's necessary boilerplate (read: boring, Apple-provided) code for linking an `NSManagedObjectContext` to your `.xcdatamodeld`, and we've thrown it in the getter for our context property. This is good because the context needs to be setup a particular way, and overriding the getter allows us to properly set it up whenever it may need.
-   2. Notice that there are is an auto-complete sections within this method. Enter the name of your .xcdatamodeld (`"slapChat"`), linking your data model to a SQLite database. Read through the boilerplate and try to make sense of it.
-3. We already setup `saveContext` because it's simply more boilerplate. Your task is to setup `fetchData`.
-   - This is Data*Store*, so add a public `Array` property to hold your fetched objects. Name it `messages`.
-   - Implement `fetchData` to create an `NSFetchRequest`, have your context `execute` it, and set the results to your `messages` array.
+   2. Notice that there is an auto-complete section within this method. Enter the name of your .xcdatamodeld (`"slapChat"`), linking your data model to a SQLite database. Read through the boilerplate and try to make sense of it.
+3. We already setup `saveContext()` because it's simply more boilerplate. Your task is to setup `fetchData()`.
+   - This is Data*Store*, so add an `Array` property to hold your fetched objects. Name it `messages`.
+   - Implement `fetchData()` to create an `NSFetchRequest`, have your context `execute` it, and set the results to your `messages` array.
  
 That's it! Your model and data store are now ready to fetch and save `Message`s.
 
@@ -41,13 +40,13 @@ That's it! Your model and data store are now ready to fetch and save `Message`s.
 
 #####Making Test Messages
 
-1. We can't display messages if we haven't created any! Let's do this in `TableViewController.m`.
-    - Make a local array for storing messages. This will power your tableview's data source, and make it more self-contained.
+1. We can't display messages if we haven't created any! Let's do this in `TableViewController`.
+    - Make a local array for storing messages. This will power your tableview's data source, and make it more self-contained.    
 	- Make your dataStore a property and initialize it. 
-	- Create a few `Message`s. Use `+NSEntityDescription insertNewObjectForEntityForName(_:inManagedObjectContext)`. 
+	- Create a few `Message`s. Use `NSEntityDescription` class function `insertNewObjectForEntityForName(_:inManagedObjectContext:)`. 
 	- Don't forget to set your test messages' `content` and `createdAt` properties! 
-2. So now is when you'd want to `saveContext()` so that these messages would persist in our database. ***BUT— since this is in `viewDidLoad()`, that means that we'll be creating and saving new messages *every time we run our app*. Let's add some logic to prevent that.***
-    - Make a new method called `generateTestData`. Dump all your message creation in there, and make your dataStore `saveContext` and `fetchData` at the end. 
+2. So now is when you'd want to `saveContext()` so that these messages would persist in our database. BUT— since this is in `viewDidLoad()`, that means that we'll be creating and saving new messages *every time we run our app*. Let's add some logic to prevent that.
+    - Make a new method called `generateTestData()`. Dump all your message creation in there, and make your dataStore `saveContext()` and `fetchData()` at the end. 
     - In `viewDidLoad()`, `fetchData()` and then pass your dataStore's messages to your local messages array.
     - Logic time— `if`  your messages array is still empty, call `generateTestData()` and pass them again.
 
@@ -57,7 +56,7 @@ That's it! Your model and data store are now ready to fetch and save `Message`s.
 *Less talk; more walk.*
 
 #####Messages TableView
-- Set your cell reuse id and make it a "basicCell".
+- Set your cell style to `Basic` and its reuse identifier to `messageCell`.
 - Set up your data source. Make each cell display the `content` of its corresponding message.
 
 Run it to make sure it works. Comment out your `generateTestData()` check to *prove* that the messages are actually persisting. Revel in your persistent data's glory. 
