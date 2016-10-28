@@ -15,7 +15,7 @@ struct DataStore {
     static let sharedDataStore =  DataStore()
     
     
-    // MARK: - Core Data Saving support
+    // MARK: - Core Data Saving and Fetching support
     
     mutating func saveContext () {
         if managedObjectContext.hasChanges {
@@ -31,10 +31,12 @@ struct DataStore {
         }
     }
     
-//        mutating func fetchData ()
-//        {
-//         perform a fetch request to fill an array property on your datastore
-//        }
+    mutating func fetchData ()
+    {
+        
+        // Perform a fetch request to fill an array property on your datastore
+        
+    }
 
     // MARK: - Core Data stack
     // Managed Object Context property getter. This is where we've dropped our "boilerplate" code.
