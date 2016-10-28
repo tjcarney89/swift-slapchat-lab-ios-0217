@@ -31,14 +31,16 @@ struct DataStore {
         }
     }
     
-    mutating func fetchData ()
-    {
+    mutating func fetchData () {
         
         // Perform a fetch request to fill an array property on your datastore
         
     }
 
+    
+    
     // MARK: - Core Data stack
+    
     // Managed Object Context property getter. This is where we've dropped our "boilerplate" code.
     // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
     

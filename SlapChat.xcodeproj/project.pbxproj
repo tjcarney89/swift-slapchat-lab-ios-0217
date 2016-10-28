@@ -15,23 +15,6 @@
 		3D7AE4701D3B30FC00964D7D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7AE46F1D3B30FC00964D7D /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		3D7AE4511D3B2FCE00964D7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3D7AE4311D3B2FCD00964D7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3D7AE4381D3B2FCE00964D7D;
-			remoteInfo = SlapChat;
-		};
-		3D7AE45C1D3B2FCE00964D7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3D7AE4311D3B2FCD00964D7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3D7AE4381D3B2FCE00964D7D;
-			remoteInfo = SlapChat;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		3D7AE4391D3B2FCE00964D7D /* SlapChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlapChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D7AE43C1D3B2FCE00964D7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,28 +22,12 @@
 		3D7AE4461D3B2FCE00964D7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D7AE4491D3B2FCE00964D7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D7AE44B1D3B2FCE00964D7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D7AE4501D3B2FCE00964D7D /* SlapChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlapChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D7AE45B1D3B2FCE00964D7D /* SlapChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlapChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D7AE46D1D3B2FE900964D7D /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		3D7AE46F1D3B30FC00964D7D /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3D7AE4361D3B2FCE00964D7D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D7AE44D1D3B2FCE00964D7D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D7AE4581D3B2FCE00964D7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -82,8 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				3D7AE4391D3B2FCE00964D7D /* SlapChat.app */,
-				3D7AE4501D3B2FCE00964D7D /* SlapChatTests.xctest */,
-				3D7AE45B1D3B2FCE00964D7D /* SlapChatUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,42 +87,6 @@
 			productReference = 3D7AE4391D3B2FCE00964D7D /* SlapChat.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3D7AE44F1D3B2FCE00964D7D /* SlapChatTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3D7AE4671D3B2FCE00964D7D /* Build configuration list for PBXNativeTarget "SlapChatTests" */;
-			buildPhases = (
-				3D7AE44C1D3B2FCE00964D7D /* Sources */,
-				3D7AE44D1D3B2FCE00964D7D /* Frameworks */,
-				3D7AE44E1D3B2FCE00964D7D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3D7AE4521D3B2FCE00964D7D /* PBXTargetDependency */,
-			);
-			name = SlapChatTests;
-			productName = SlapChatTests;
-			productReference = 3D7AE4501D3B2FCE00964D7D /* SlapChatTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		3D7AE45A1D3B2FCE00964D7D /* SlapChatUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3D7AE46A1D3B2FCE00964D7D /* Build configuration list for PBXNativeTarget "SlapChatUITests" */;
-			buildPhases = (
-				3D7AE4571D3B2FCE00964D7D /* Sources */,
-				3D7AE4581D3B2FCE00964D7D /* Frameworks */,
-				3D7AE4591D3B2FCE00964D7D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3D7AE45D1D3B2FCE00964D7D /* PBXTargetDependency */,
-			);
-			name = SlapChatUITests;
-			productName = SlapChatUITests;
-			productReference = 3D7AE45B1D3B2FCE00964D7D /* SlapChatUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -172,14 +101,6 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = KXY9EDFTF5;
 						LastSwiftMigration = 0810;
-					};
-					3D7AE44F1D3B2FCE00964D7D = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 3D7AE4381D3B2FCE00964D7D;
-					};
-					3D7AE45A1D3B2FCE00964D7D = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 3D7AE4381D3B2FCE00964D7D;
 					};
 				};
 			};
@@ -197,8 +118,6 @@
 			projectRoot = "";
 			targets = (
 				3D7AE4381D3B2FCE00964D7D /* SlapChat */,
-				3D7AE44F1D3B2FCE00964D7D /* SlapChatTests */,
-				3D7AE45A1D3B2FCE00964D7D /* SlapChatUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -211,20 +130,6 @@
 				3D7AE44A1D3B2FCE00964D7D /* LaunchScreen.storyboard in Resources */,
 				3D7AE4471D3B2FCE00964D7D /* Assets.xcassets in Resources */,
 				3D7AE4421D3B2FCE00964D7D /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D7AE44E1D3B2FCE00964D7D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D7AE4591D3B2FCE00964D7D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,34 +146,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3D7AE44C1D3B2FCE00964D7D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3D7AE4571D3B2FCE00964D7D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3D7AE4521D3B2FCE00964D7D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3D7AE4381D3B2FCE00964D7D /* SlapChat */;
-			targetProxy = 3D7AE4511D3B2FCE00964D7D /* PBXContainerItemProxy */;
-		};
-		3D7AE45D1D3B2FCE00964D7D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3D7AE4381D3B2FCE00964D7D /* SlapChat */;
-			targetProxy = 3D7AE45C1D3B2FCE00964D7D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3D7AE4401D3B2FCE00964D7D /* Main.storyboard */ = {
@@ -404,52 +282,6 @@
 			};
 			name = Release;
 		};
-		3D7AE4681D3B2FCE00964D7D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = SlapChatTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.FlatironSchool.SlapChatTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlapChat.app/SlapChat";
-			};
-			name = Debug;
-		};
-		3D7AE4691D3B2FCE00964D7D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = SlapChatTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.FlatironSchool.SlapChatTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlapChat.app/SlapChat";
-			};
-			name = Release;
-		};
-		3D7AE46B1D3B2FCE00964D7D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = SlapChatUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.FlatironSchool.SlapChatUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = SlapChat;
-			};
-			name = Debug;
-		};
-		3D7AE46C1D3B2FCE00964D7D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = SlapChatUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.FlatironSchool.SlapChatUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = SlapChat;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -467,24 +299,6 @@
 			buildConfigurations = (
 				3D7AE4651D3B2FCE00964D7D /* Debug */,
 				3D7AE4661D3B2FCE00964D7D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3D7AE4671D3B2FCE00964D7D /* Build configuration list for PBXNativeTarget "SlapChatTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3D7AE4681D3B2FCE00964D7D /* Debug */,
-				3D7AE4691D3B2FCE00964D7D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3D7AE46A1D3B2FCE00964D7D /* Build configuration list for PBXNativeTarget "SlapChatUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3D7AE46B1D3B2FCE00964D7D /* Debug */,
-				3D7AE46C1D3B2FCE00964D7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
