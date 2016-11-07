@@ -18,10 +18,6 @@ Before we work on any views, we need to prepare our models for core data. This p
 
 1. First, let's create our data model (`.xcdatamodeld`). Create a new file, select the "Core Data" section on the left, then choose "Data Model". Usually we give this the same name as our project, so let's name it "slapChat".
 - Go to your new **.xcdatamodeld** and create an entity (*"Add Entity" button near the bottom*) and name it `Message`. Give it two attributes: `content` (String) and `createdAt` (Date).
-- Now that we've set up the entity, we have to "generate the `NSManagedObject` subclass". 
-   - In the top menu, go to Editor > Create NSManagedObject Subclass. Select "slapChat", then "Message". 
-   - When it asks you where you want to save the files, go to "Group" at the bottom to specify where they'll show up in your file navigator. 
-- Voilà! You have 2 new files. The regular class (*Message.swift*) is where you can write new methods. The category (*Message+CoreDataProperties.swift*) was made for Core Data so it can manage your object's properties— **don't mess with it!**
 
 Our `.xcdatamodeld` is setup, so now let's setup `DataStore` so that it can fetch/save with Core Data. 
 
