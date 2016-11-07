@@ -2,7 +2,7 @@
 //  TableViewController.swift
 //  SlapChat
 //
-//  Created by susan lovaglio on 7/16/16.
+//  Created by Ian Rahman on 7/16/16.
 //  Copyright © 2016 Flatiron School. All rights reserved.
 //
 
