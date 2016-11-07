@@ -19,7 +19,7 @@ class AddMessageViewController: UIViewController {
     }
 
     @IBAction func saveMessageButtonTapped(_ sender: AnyObject) {
-        let store = DataStore.sharedDataStore
+        let store = DataStore.sharedInstance
         let context = store.persistentContainer.viewContext
         let newMessage = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
         newMessage.content = addMessageTextField.text

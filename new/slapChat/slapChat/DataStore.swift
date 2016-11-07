@@ -13,7 +13,7 @@ class DataStore {
     
     var messages:[Message] = []
     
-    static let sharedDataStore = DataStore()
+    static let sharedInstance = DataStore()
     
     private init() {}
     
@@ -62,7 +62,9 @@ class DataStore {
         }
     }
     
-    func fetchData () {
+    // MARK: - Core Data Fetching support
+    
+    func fetchData() {
         let context = persistentContainer.viewContext
         let messagesRequest: NSFetchRequest<Message> = Message.fetchRequest()
         
@@ -71,7 +73,7 @@ class DataStore {
             messages.sort(by: { (message1, message2) -> Bool in
                 let date1 = message1.createdAt! as Date
                 let date2 = message2.createdAt! as Date
-                return date1.compare(date2) == ComparisonResult.orderedAscending
+                return date1 < date2
             })
         } catch let error {
             print("Error fetching data: \(error)")
@@ -81,8 +83,9 @@ class DataStore {
         if messages.count == 0 {
             generateTestData()
         }
-        
     }
+    
+    // MARK: - Core Data generation of test data
     
     func generateTestData() {
         let context = persistentContainer.viewContext

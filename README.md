@@ -6,8 +6,7 @@ Let's make an app where you can create messages that persist in Core Data.
 
 1. Set up core data model (`.xcdatamodeld`) from scratch.
 2. Configure boilerplate code for data store to interact with Core Data / SQLite database.
-3. Learn basics of creating new `NSManagedObject` subclasses.
-4. Learn basics of fetching/saving with Core Data.
+3. Learn basics of fetching/saving with Core Data.
 
 ## Instructions
 
@@ -20,22 +19,19 @@ Before we work on any views, we need to prepare our models for Core Data. This p
 ##### Data Model
 
 1. First, let's create our data model (`.xcdatamodeld`). Create a new file, select the "Core Data" section on the left, then choose "Data Model". Usually we give this the same name as our project, so let's name it "slapChat".
-- Go to your new **.xcdatamodeld** file and create an entity (*"Add Entity" button near the bottom*) and name it `Message`. Give it two attributes: `content` (String) and `createdAt` (Date). A singular name is used for each entity (e.g., `Message` rather than `Messages`), even if we know we're going to have multiples of the entity later on. This is because we're really dealing with *multiple entities*, each entity being its own instance of a `NSManagedObject` subclass. Wouldn't it be weird to say we're going to set the `content` of a `Messages`?
-- Now that we've set up the entity, we have to "generate the `NSManagedObject` subclass". 
-   - In the top menu, go to Editor > Create NSManagedObject Subclass. Select "SlapChat", then "Message". 
-   - When it asks you where you want to save the files, go to "Group" at the bottom to specify where they'll show up in your file navigator. Make sure these files are saved alongside the other files in this project! 
-- Voilà! You have 2 new files. The regular class (*Message+CoreDataClass.swift*) is where you can write new methods. The category (*Message+CoreDataProperties.swift*) was made for Core Data so it can manage your object's properties— **don't mess with it!**
+2. Go to your new **.xcdatamodeld** file and create an entity (*"Add Entity" button near the bottom*) and name it `Message`. Give it two attributes: `content` (String) and `createdAt` (Date, though this is stored in Core Data as an `NSDate`). A singular name is used for each entity (e.g., `Message` rather than `Messages`), even if we know we're going to have multiples of the entity later on. This is because we're really dealing with *multiple entities*, each entity being its own instance of a `NSManagedObject` subclass. Wouldn't it be weird to say we're going to set the `content` of a `Messages`?
+3. Make sure each attribute's Optional property is unchecked out.
 
-Our `.xcdatamodeld` is setup, so now let's setup `DataStore` so that it can fetch/save with Core Data. 
+Our `.xcdatamodeld` is set up, so now let's prepare `DataStore` so that it can fetch/save with Core Data. 
 
 ##### Data Store
 
-1. Check out `DataStore.swift`. We've set a few things up for you: a singleton, `saveContext()`, and a section titled `Core Data Stack` where the getter for an `NSManagedObjectContext` property is being overridden. Let's look at that getter.
-   1. There's necessary boilerplate (read: boring, Apple-provided) code for linking an `NSManagedObjectContext` to your `.xcdatamodeld`, and we've thrown it in the getter for our context property. This is good because the context needs to be setup a particular way, and overriding the getter allows us to properly set it up whenever it may need.
-   2. Notice that there is an auto-complete section within this method. Enter the name of your .xcdatamodeld (`"slapChat"`), linking your data model to a SQLite database. Read through the boilerplate and try to make sense of it.
-3. We already setup `saveContext()` because it's simply more boilerplate. Your task is to setup `fetchData()`.
-   - This is Data*Store*, so add an `Array` property to hold your fetched objects. Name it `messages`.
-   - Implement `fetchData()` to create an `NSFetchRequest`, have your context `execute` it, and set the results to your `messages` array.
+1. Check out `DataStore.swift`. We've set a few things up for you: a singleton called `sharedInstance`, a private initializer, a `persistentContainer`, and the function `saveContext()`. The last two of these actually come prebuilt in your `AppDelegate` when you create a new project and specify the use of Core Data. It's common practice to move them to a Data Store, however, for better organization of your code.
+2. Your task is to setup `fetchData()`.
+   - This is Data*Store*, so add an `Array` property on this class to hold your fetched objects. Name it `messages`.
+   - Implement `fetchData()` to create an `NSFetchRequest`, have your context `fetch` it, set the results to your `messages` array, and sort `messages` by their creation dates.
+
+> Hint: The context is retrieved by calling `persistentContainer.viewContext`.
  
 That's it! Your model and data store are now ready to fetch and save `Message`s.
 
@@ -43,11 +39,10 @@ That's it! Your model and data store are now ready to fetch and save `Message`s.
 
 ##### Making Test Messages
 
-1. We can't display messages if we haven't created any! Let's do this in `TableViewController`.
-    - Make a local array for storing messages. This will power your tableview's data source, and make it more self-contained.    
-	- Make your dataStore a property and initialize it. 
-	- Create a few `Message`s. Use `NSEntityDescription` class function `insertNewObjectForEntityForName(_:inManagedObjectContext:)`. 
-	- Don't forget to set your test messages' `content` and `createdAt` properties! 
+1. We can't display messages if we haven't created any! Let's do this in `TableViewController`.   
+	- Create a `store` property to hold your Data Store's `sharedInstance`. 
+	- Create a few `Message`s. Use `NSEntityDescription`'s class function `insertNewObject(forEntityName:into:)`.
+	- Don't forget to set your test messages' `content` and `createdAt` properties!
 2. So now is when you'd want to `saveContext()` so that these messages would persist in our database. BUT— since this is in `viewDidLoad()`, that means that we'll be creating and saving new messages *every time we run our app*. Let's add some logic to prevent that.
     - Make a new method called `generateTestData()`. Dump all your message creation in there, and make your dataStore `saveContext()` and `fetchData()` at the end. 
     - In `viewDidLoad()`, `fetchData()` and then pass your dataStore's messages to your local messages array.
