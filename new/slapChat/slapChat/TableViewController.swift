@@ -11,7 +11,7 @@ import UIKit
 class TableViewController: UITableViewController {
     
     var managedMessageObjects: [Message] = []
-    var store: DataStore = DataStore()
+    var store: DataStore = DataStore.sharedDataStore
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +23,6 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
         
     }
     

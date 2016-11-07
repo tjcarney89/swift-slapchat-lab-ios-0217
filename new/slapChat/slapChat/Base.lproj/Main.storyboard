@@ -21,12 +21,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a new message here!" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Giy-cR-wM8">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a new message here!" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Giy-cR-wM8">
                                 <rect key="frame" x="93" y="239" width="188" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KjO-G5-VNO">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KjO-G5-VNO">
                                 <rect key="frame" x="47" y="295" width="280" height="30"/>
                                 <state key="normal" title="Save Message">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,7 +35,7 @@
                                     <action selector="saveMessageButtonTapped:" destination="o7X-q2-Eqs" eventType="touchUpInside" id="PEn-Ka-R7d"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJz-GS-Xhs">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJz-GS-Xhs">
                                 <rect key="frame" x="47" y="345" width="280" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="a9g-Yk-oXH"/>
@@ -50,13 +50,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="KjO-G5-VNO" firstAttribute="top" secondItem="Giy-cR-wM8" secondAttribute="bottom" constant="26" id="CJc-aj-lkG"/>
+                            <constraint firstItem="Giy-cR-wM8" firstAttribute="centerX" secondItem="KjO-G5-VNO" secondAttribute="centerX" id="Df1-rS-b7V"/>
                             <constraint firstItem="EJz-GS-Xhs" firstAttribute="top" secondItem="KjO-G5-VNO" secondAttribute="bottom" constant="20" id="ICB-26-zmW"/>
-                            <constraint firstItem="Giy-cR-wM8" firstAttribute="centerY" secondItem="Dn3-nd-kmP" secondAttribute="centerY" id="Kif-Q5-MGd"/>
                             <constraint firstItem="EJz-GS-Xhs" firstAttribute="centerX" secondItem="Dn3-nd-kmP" secondAttribute="centerX" id="ODM-Dc-Hxc"/>
                             <constraint firstItem="EJz-GS-Xhs" firstAttribute="trailing" secondItem="KjO-G5-VNO" secondAttribute="trailing" id="cC6-NY-AXO"/>
-                            <constraint firstItem="Giy-cR-wM8" firstAttribute="centerX" secondItem="Dn3-nd-kmP" secondAttribute="centerX" id="ir9-ol-0jD"/>
+                            <constraint firstItem="KjO-G5-VNO" firstAttribute="top" secondItem="Giy-cR-wM8" secondAttribute="bottom" constant="26" id="jIn-fe-mIf"/>
                             <constraint firstItem="EJz-GS-Xhs" firstAttribute="leading" secondItem="KjO-G5-VNO" secondAttribute="leading" id="y9C-T8-7d7"/>
+                            <constraint firstItem="Giy-cR-wM8" firstAttribute="top" secondItem="Cn8-fP-MyD" secondAttribute="bottom" constant="219" id="zbf-Zj-QMF"/>
                         </constraints>
                     </view>
                     <connections>
