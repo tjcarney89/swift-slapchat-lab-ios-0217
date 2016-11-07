@@ -1,31 +1,34 @@
+# SlapChat
 
-SlapChat
-========
 Let's make an app where you can create messages that persist in Core Data.
-##Objectives
+
+## Objectives
+
 1. Set up core data model (`.xcdatamodeld`) from scratch.
 2. Configure boilerplate code for data store to interact with Core Data / SQLite database.
 3. Learn basics of creating new `NSManagedObject` subclasses.
 4. Learn basics of fetching/saving with Core Data.
 
 ## Instructions
-Open up the project. We've set up a blank tableview controller and started `DataManager`. Your job is to setup core data, display your persistent `Message` objects, and add an interface where users can create and save new messages.
 
-###Core Data Setup
-Before we work on any views, we need to prepare our models for core data. This part has much more 'explaining' than 'coding', but it's important! So **soak up the knowledge.**
+Open up the project. We've set up a blank tableview controller and started `DataManager`. Your job is to setup Core Data, display your persistent `Message` objects, and add an interface where users can create and save new messages.
 
-#####Data Model
+### Core Data Setup
+
+Before we work on any views, we need to prepare our models for Core Data. This part has much more 'explaining' than 'coding', but it's important! So **soak up the knowledge.**
+
+##### Data Model
 
 1. First, let's create our data model (`.xcdatamodeld`). Create a new file, select the "Core Data" section on the left, then choose "Data Model". Usually we give this the same name as our project, so let's name it "slapChat".
-- Go to your new **.xcdatamodeld** and create an entity (*"Add Entity" button near the bottom*) and name it `Message`. Give it two attributes: `content` (String) and `createdAt` (Date).
+- Go to your new **.xcdatamodeld** file and create an entity (*"Add Entity" button near the bottom*) and name it `Message`. Give it two attributes: `content` (String) and `createdAt` (Date). A singular name is used for each entity (e.g., `Message` rather than `Messages`), even if we know we're going to have multiples of the entity later on. This is because we're really dealing with *multiple entities*, each entity being its own instance of a `NSManagedObject` subclass. Wouldn't it be weird to say we're going to set the `content` of a `Messages`?
 - Now that we've set up the entity, we have to "generate the `NSManagedObject` subclass". 
-   - In the top menu, go to Editor > Create NSManagedObject Subclass. Select "slapChat", then "Message". 
-   - When it asks you where you want to save the files, go to "Group" at the bottom to specify where they'll show up in your file navigator. 
-- Voilà! You have 2 new files. The regular class (*Message.swift*) is where you can write new methods. The category (*Message+CoreDataProperties.swift*) was made for Core Data so it can manage your object's properties— **don't mess with it!**
+   - In the top menu, go to Editor > Create NSManagedObject Subclass. Select "SlapChat", then "Message". 
+   - When it asks you where you want to save the files, go to "Group" at the bottom to specify where they'll show up in your file navigator. Make sure these files are saved alongside the other files in this project! 
+- Voilà! You have 2 new files. The regular class (*Message+CoreDataClass.swift*) is where you can write new methods. The category (*Message+CoreDataProperties.swift*) was made for Core Data so it can manage your object's properties— **don't mess with it!**
 
 Our `.xcdatamodeld` is setup, so now let's setup `DataStore` so that it can fetch/save with Core Data. 
 
-#####Data Store
+##### Data Store
 
 1. Check out `DataStore.swift`. We've set a few things up for you: a singleton, `saveContext()`, and a section titled `Core Data Stack` where the getter for an `NSManagedObjectContext` property is being overridden. Let's look at that getter.
    1. There's necessary boilerplate (read: boring, Apple-provided) code for linking an `NSManagedObjectContext` to your `.xcdatamodeld`, and we've thrown it in the getter for our context property. This is good because the context needs to be setup a particular way, and overriding the getter allows us to properly set it up whenever it may need.
@@ -36,9 +39,9 @@ Our `.xcdatamodeld` is setup, so now let's setup `DataStore` so that it can fetc
  
 That's it! Your model and data store are now ready to fetch and save `Message`s.
 
-###A Little More Setup
+### A Little More Setup
 
-#####Making Test Messages
+##### Making Test Messages
 
 1. We can't display messages if we haven't created any! Let's do this in `TableViewController`.
     - Make a local array for storing messages. This will power your tableview's data source, and make it more self-contained.    
@@ -52,16 +55,16 @@ That's it! Your model and data store are now ready to fetch and save `Message`s.
 
 3. Run it a couple times and either `print()` or breakpoint/`po` your local messages array to make sure you're not saving a ton of duplicates. Assuming all went well, we can finally get some stuff on the screen!
 
-###View Time (Finally)
+### View Time (Finally)
 *Less talk; more walk.*
 
-#####Messages TableView
+##### Messages TableView
 - Set your cell style to `Basic` and its reuse identifier to `messageCell`.
 - Set up your data source. Make each cell display the `content` of its corresponding message.
 
 Run it to make sure it works. Comment out your `generateTestData()` check to *prove* that the messages are actually persisting. Revel in your persistent data's glory. 
 
-#####'Add Message' Interface
+##### 'Add Message' Interface
 Let's keep rollin' with our theme of "just do it":
 
   1. Add a plus button to the navigation bar and link it to a new view controller. Name the class `AddMessageViewController`.
@@ -75,7 +78,7 @@ Let's keep rollin' with our theme of "just do it":
      - reloads the tableView.   
   4. Give it another shot— when the AddMessageVC is dismissed, your tableView will display the new message.
 
-####Congratulations, you made an app with a persistent data store!
+#### Congratulations, you made an app with a persistent data store!
 
 ## Extra Credit
 
