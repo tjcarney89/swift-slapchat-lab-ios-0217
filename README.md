@@ -10,7 +10,7 @@ Let's make an app where you can create messages that persist in Core Data.
 
 ## Instructions
 
-Open up the project. We've set up a blank tableview controller and started `DataManager`. Your job is to setup Core Data, display your persistent `Message` objects, and add an interface where users can create and save new messages.
+Open up the project. We've set up a blank tableview controller and started `DataStore`. Your job is to setup Core Data, display your persistent `Message` objects, and add an interface where users can create and save new messages.
 
 ### Core Data Setup
 
