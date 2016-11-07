@@ -41,12 +41,12 @@ That's it! Your model and data store are now ready to fetch and save `Message`s.
 
 1. We can't display messages if we haven't created any! Let's do this in `TableViewController`.   
 	- Create a `store` property to hold your Data Store's `sharedInstance`. 
-	- Create a few `Message`s. Use `NSEntityDescription`'s class function `insertNewObject(forEntityName:into:)`.
+	- In `viewDidLoad()` create a few `Message`s. Use `NSEntityDescription`'s class function `insertNewObject(forEntityName:into:)`.
 	- Don't forget to set your test messages' `content` and `createdAt` properties!
-2. So now is when you'd want to `saveContext()` so that these messages would persist in our database. BUT— since this is in `viewDidLoad()`, that means that we'll be creating and saving new messages *every time we run our app*. Let's add some logic to prevent that.
-    - Make a new method called `generateTestData()`. Dump all your message creation in there, and make your dataStore `saveContext()` and `fetchData()` at the end. 
+2. So now is when you'd want to `saveContext()` so that these messages would persist in our database. BUT, since this is in `viewDidLoad()`, that means that we'd be creating and saving new messages *every time we run our app*. Let's add some logic to prevent that.
+    - Make a new method called `generateTestData()`. Dump all your message creation in there, and make your dataStore `saveContext()` and `fetchData()` at the end. The reason we `fetchData()` here is to ensure the `messages` property on our `store` singleton is completely up-to-date.
     - In `viewDidLoad()`, `fetchData()` and then pass your dataStore's messages to your local messages array.
-    - Logic time— `if`  your messages array is still empty, call `generateTestData()` and pass them again.
+    - Logic time - `if`  your messages array is still empty, call `generateTestData()` and pass them again.
 
 3. Run it a couple times and either `print()` or breakpoint/`po` your local messages array to make sure you're not saving a ton of duplicates. Assuming all went well, we can finally get some stuff on the screen!
 
@@ -60,6 +60,7 @@ That's it! Your model and data store are now ready to fetch and save `Message`s.
 Run it to make sure it works. Comment out your `generateTestData()` check to *prove* that the messages are actually persisting. Revel in your persistent data's glory. 
 
 ##### 'Add Message' Interface
+
 Let's keep rollin' with our theme of "just do it":
 
   1. Add a plus button to the navigation bar and link it to a new view controller. Name the class `AddMessageViewController`.
@@ -71,7 +72,7 @@ Let's keep rollin' with our theme of "just do it":
      - fetches data, 
      - updates your local messages, 
      - reloads the tableView.   
-  4. Give it another shot— when the AddMessageVC is dismissed, your tableView will display the new message.
+  4. Give it another shot. When the `AddMessageViewController` is dismissed, your tableView will display the new message.
 
 #### Congratulations, you made an app with a persistent data store!
 
@@ -80,4 +81,4 @@ Let's keep rollin' with our theme of "just do it":
   1. Add a button that resorts the messages in the array to descending by the `createdAt` property.
   2. Take your `generateTestData()` method out of `TableViewController` and put it where it belongs (`DataStore`).
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/slapchat-add' title='SlapChat'>SlapChat</a> on Learn.co and start learning to code for free.</p>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/swift-slapchat-lab' title='SlapChat'>SlapChat</a> on Learn.co and start learning to code for free.</p>

@@ -19,18 +19,16 @@ class AddMessageViewController: UIViewController {
     }
 
     @IBAction func saveMessageButtonTapped(_ sender: AnyObject) {
-        
-        var store = DataStore()
-        let newMessage = NSEntityDescription.insertNewObject(forEntityName: "Message", into: store.managedObjectContext) as! Message
+        let store = DataStore.sharedInstance
+        let context = store.persistentContainer.viewContext
+        let newMessage = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
         newMessage.content = addMessageTextField.text
-        newMessage.createdAt = Date()
+        newMessage.createdAt = NSDate()
         store.saveContext()
         dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func cancelButtonTapped(_ sender: AnyObject) {
-        
         dismiss(animated: true, completion: nil)
     }
 }
