@@ -41,7 +41,7 @@ That's it! Your model and data store are now ready to fetch and save `Message`s.
 
 1. We can't display messages if we haven't created any! Let's do this in `TableViewController`.   
 	- Create a `store` property to hold your Data Store's `sharedInstance`. 
-	- In `viewDidLoad()` create a few `Message`s. Use `NSEntityDescription`'s class function `insertNewObject(forEntityName:into:)`.
+	- In `viewDidLoad()`, use `Message(context:)` to create a few `Message`s.
 	- Don't forget to set your test messages' `content` and `createdAt` properties!
 2. So now is when you'd want to `saveContext()` so that these messages would persist in our database. BUT, since this is in `viewDidLoad()`, that means that we'd be creating and saving new messages *every time we run our app*. Let's add some logic to prevent that.
     - Make a new method called `generateTestData()`. Dump all your message creation in there, and make your dataStore `saveContext()` and `fetchData()` at the end. The reason we `fetchData()` here is to ensure the `messages` property on our `store` singleton is completely up-to-date.

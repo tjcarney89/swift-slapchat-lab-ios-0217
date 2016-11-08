@@ -90,17 +90,17 @@ class DataStore {
     func generateTestData() {
         let context = persistentContainer.viewContext
         
-        let messageOne: Message = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
+        let messageOne = Message(context: context)
         
         messageOne.content = "Message 1"
         messageOne.createdAt = NSDate()
         
-        let messageTwo: Message = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
+        let messageTwo = Message(context: context)
         
         messageTwo.content = "Message 2"
         messageTwo.createdAt = NSDate()
         
-        let messageThree: Message = NSEntityDescription.insertNewObject(forEntityName: "Message", into: context) as! Message
+        let messageThree = Message(context: context)
         
         messageThree.content = "Message 3"
         messageThree.createdAt = NSDate()
