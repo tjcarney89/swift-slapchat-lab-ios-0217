@@ -18,8 +18,9 @@ Before we work on any views, we need to prepare our models for Core Data. This p
 
 ##### Data Model
 
-1. First, let's create our data model (`.xcdatamodeld`). Create a new file, select the "Core Data" section on the left, then choose "Data Model". Usually we give this the same name as our project, so let's name it "SlapChat".
+1. First, let's create our data model (`.xcdatamodeld`). Create a new file, select the "Core Data" section on the left, then choose "Data Model". Usually we give this the same name as our project, so let's name it "slapChat".
 2. Go to your new **.xcdatamodeld** file and create an entity (*"Add Entity" button near the bottom*) and name it `Message`. Give it two attributes: `content` (String) and `createdAt` (Date, though this is stored in Core Data as an `NSDate`). A singular name is used for each entity (e.g., `Message` rather than `Messages`), even if we know we're going to have multiples of the entity later on. This is because we're really dealing with *multiple entities*, each entity being its own instance of a `NSManagedObject` subclass. Wouldn't it be weird to say we're going to set the `content` of a `Messages`?
+3. Make sure each attribute's Optional property is unchecked out.
 
 Our `.xcdatamodeld` is set up, so now let's prepare `DataStore` so that it can fetch/save with Core Data. 
 
@@ -40,7 +41,7 @@ That's it! Your model and data store are now ready to fetch and save `Message`s.
 
 1. We can't display messages if we haven't created any! Let's do this in `TableViewController`.   
 	- Create a `store` property to hold your Data Store's `sharedInstance`. 
-	- In `viewDidLoad()` create a few `Message`s. Use `NSEntityDescription`'s class function `insertNewObject(forEntityName:into:)`.
+	- In `viewDidLoad()`, use `Message(context:)` to create a few `Message`s.
 	- Don't forget to set your test messages' `content` and `createdAt` properties!
 2. So now is when you'd want to `saveContext()` so that these messages would persist in our database. BUT, since this is in `viewDidLoad()`, that means that we'd be creating and saving new messages *every time we run our app*. Let's add some logic to prevent that.
     - Make a new method called `generateTestData()`. Dump all your message creation in there, and make your dataStore `saveContext()` and `fetchData()` at the end. The reason we `fetchData()` here is to ensure the `messages` property on our `store` singleton is completely up-to-date.
