@@ -15,6 +15,8 @@ class DataStore {
     
     private init() {}
     
+    var messages = [Message]()
+    
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -57,6 +59,33 @@ class DataStore {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
+        }
+    }
+    
+    func fetchData() {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Message> = Message.fetchRequest()
+        do {
+            self.messages = try context.fetch(fetchRequest)
+            self.messages.sort(by: { first, second in
+                
+                switch first.createdAt!.compare(second.createdAt! as Date) {
+                    
+                case .orderedAscending:
+                    return true
+                case .orderedDescending:
+                    return false
+                case .orderedSame:
+                    return true
+                }
+                
+                
+                
+                
+            })
+            
+        } catch {
+        
         }
     }
     
